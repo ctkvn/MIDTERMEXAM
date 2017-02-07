@@ -1,0 +1,108 @@
+<html>
+	<head>
+		<title>Fishing</title>
+	</head>
+	<body text="#003300">
+		<h2 align="center">Fishing</h2>
+		<p align="center">We rent all of our fishing equipment by the week.</p>
+
+		<form method="post" name="form" action="javascript:void(0)">
+			<table border="0" width="39%" align="center">
+				<tr>
+					<td width="48%"><b>Product Name</b></td>
+					<td width="10%"><b>Price</b></td>
+					<td width="43%"><b>Quantity</b></td>
+				</tr>
+				<tr>
+					<td width="48%">1 Fishing Rod &amp; Reel</td>
+					<td width="10%"><input type="text" name="txtRod" size="5" value="7.99"></td>
+					<td width="43"><select size="1" name="qRod">
+						<option selected value="0">Select Quantity</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option></select>
+					</td>
+				</tr>
+				<tr>
+					<td width="48%">1 Tackle Box</td>
+					<td width="10%"><input type="text" name="txtBox" size="5" value="2.55"></td>
+					<td width="43%"><select size="1" name="qBox">
+						<option selected value="0">Select Quantity</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option></select>
+					</td>
+				</tr>
+				<tr>
+					<td width="48%">1 Taga Box</td>
+					<td width="10%"><input type="text" name="txtTGBox" size="5" value="1.75"></td>
+					<td width="43%"><select size="1" name="qTGBox">
+						<option selected value="0">Select Quantity</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option></select>
+					</td>
+				</tr>
+			</table>
+			<p align="center"><input type="submit" value="Calculate your order" name="btnSubmit" onClick="calcTotal()">
+				<input type="reset" value="Reset" name="btnReset">
+					<p align="center">Your Total is </p>
+					<p align="center"><input type="text" name="txtTotal" size="10" value="0.00">
+					<p align="center">Tender </p>
+					<p align="center"><input type="text" name="txtTender" size="10" value="0.00">
+					<p align="center"><input type="submit" value="Calculate change" name="btnCChange" onClick="calcChange()">
+					<p align="center">Change </p>
+					<p align="center"><input type="text" name="txtChange" size="10" value="0.00">
+			</p>
+			<script language="javascript">
+				function calcTotal(){
+					var strRod, strBox, strTGBox, prRod, prBox, prTGBox, strTotal;
+					strRod=document.form.qRod.value;
+					strBox=document.form.qBox.value;
+					strTGBox=document.form.qTGBox.value;
+					prRod=document.form.txtRod.value;
+					prBox=document.form.txtBox.value;
+					prTGBox=document.form.txtTGBox.value;
+
+					strRod=parseInt(strRod) * prRod;
+					strBox=parseInt(strBox) * prBox;
+					strTGBox=parseInt(strTGBox) * prTGBox;
+					strTotal=(strRod + strBox + strTGBox);
+					document.form.txtTotal.value=strTotal;
+				}
+
+				function calcChange(){
+					var amtTotal, amtTender, strChange;
+					amtTotal=document.form.txtTotal.value;
+					amtTender=document.form.txtTender.value;
+
+					strChange=(amtTender - amtTotal);
+					document.form.txtChange.value=strChange;
+				}
+			</script>
+		</form>
+		<h3 align="center">Click button to change Color Background!</h3>
+		<form name="frmColor" action="javascript:void(0);">
+			<table border="0" align="center">
+				<tr>
+					<td>
+						<input type="submit" value="White" name="bW" onClick="selectColor('White')">
+						<input type="submit" value="Yellow" name="bY" onClick="selectColor('Yellow')">
+						<input type="submit" value="Fuchsia" name="bF" onClick="selectColor('Fuchsia')">
+						<input type="submit" value="Green" name="bG" onClick="selectColor('Green')">
+						<input type="submit" value="Purple" name="bP" onClick="selectColor('Purple')">
+						<input type="submit" value="Silver" name="bS" onClick="selectColor('Silver')">
+						<input type="submit" value="Teal" name="bT" onClick="selectColor('Teal')">
+						<input type="submit" value="Olive" name="bO" onClick="selectColor('Olive')">
+					</td>
+				</tr>
+			</table>
+		</form>
+		<script language="javascript">
+			function selectColor(selectColor){
+				document.bgColor=selectColor;
+			}
+		</script>
+		
+	</body>
+</html>
